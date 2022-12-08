@@ -1,21 +1,24 @@
-<aui-leaflet [leafletMap]="leafletMap" [hasSidebar]="hasSidebar">
-    <div *ngIf="hasSidebar">
-        <ng-content></ng-content>
-    </div>
-    <div *ngIf="showLayerManagement">
-        <aui-layer-management [supportingLayers]="supportingLayers" [operationalLayer]="operationalLayer" (layerVisibilityChange)="handleLayerVisibilityChange($event)" (layerManagementClosed)="toggleLayermanagement()"></aui-layer-management>
+<aui-leaflet [leafletMap]="leafletMap" [hasSidebar]="showSidebar">
+    <div class="sidebar" *ngIf="hasSidebar && showSidebar">
+        <div class="sidebar__header">
+            <button class="a-button-transparent a-button--default has-icon sidebar__close-button" aria-label="Sluiten" (click)="toggleSidebar()"><span class="fa fa-close" aria-hidden="true"></span></button>
+        </div>
+        <div class="sidebar__content">
+            <ng-content></ng-content>
+            <aui-layer-management *ngIf="showLayerManagement" [supportingLayers]="supportingLayers" [operationalLayer]="operationalLayer" (layerVisibilityChange)="handleLayerVisibilityChange($event)" (layerManagementClosed)="toggleLayermanagement()"></aui-layer-management>
+        </div>
     </div>
     <div class="controls-top-left" controls top left>
         <button
-            *ngIf="showLayerManagement"
+            *ngIf="hasSidebar"
             type="button"
             class="a-button a-button--small has-icon a-button--block u-margin-bottom-xs"
             name="toggle-layermanagement"
-            [title]="hasSidebar ? 'Sluit lagenoverzicht' : 'Open lagenoverzicht'"
+            [title]="showSidebar? 'Sluit lagenoverzicht' : 'Open lagenoverzicht'"
             aria-label="Open/sluit lagenoverzicht"
-            (click)="toggleLayermanagement()"
+            (click)="toggleSidebar()"
         >
-            <span class="fa" [ngClass]="{ 'fa-angle-double-right': !hasSidebar, 'fa-angle-double-left': hasSidebar }"></span>
+            <span class="fa" [ngClass]="{ 'fa-angle-double-right': !showSidebar, 'fa-angle-double-left': showSidebar}"></span>
         </button>
         <div class="m-button-group m-button-group--vertical">
             <div *ngIf="leafletMap.operationalLayer && showSelectionTools" class="m-button-group m-button-group--horizontal">

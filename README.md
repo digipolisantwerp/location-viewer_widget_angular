@@ -129,8 +129,10 @@ class ExampleComponent {
     @Input() defaultZoom = 14;
     /* The initial map center on load. */
     @Input() mapCenter: Array<number> = [51.215, 4.425];
-    /* Show a sidebar next to the map leaflet. A sidebar can contain any additional info you like. */
+    /* Shows button to open sidebar if true. A sidebar can contain any additional info you like. */
     @Input() hasSidebar = false;
+    /* If hasSidebar is true this will show whether the sidebar should be visible from the start */
+    @Input() showSidebar = false;
     /* Shows layermangement inside the sidebar. Layermanagement is used to add or remove featurelayers. */
     @Input() showLayerManagement = true;
     /* Show selection tools */
