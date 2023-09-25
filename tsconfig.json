@@ -6,14 +6,14 @@
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
-    "module": "esnext",
+    "module": "es2020",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "ES2022",
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -28,6 +28,7 @@
       "ngx-location-viewer/*": [
         "dist/ngx-location-viewer/*"
       ]
-    }
+    },
+    "useDefineForClassFields": false
   }
 }
