@@ -1,10 +1,10 @@
 {
     "name": "@acpaas-ui-widgets/ngx-location-viewer",
-    "version": "3.1.0",
+    "version": "3.1.1",
     "license": "See license file",
     "peerDependencies": {
-        "@acpaas-ui/ngx-icon": "6.0.0",
-        "@acpaas-ui/ngx-leaflet": "6.0.0",
+        "@acpaas-ui/ngx-icon": "^6.0.0",
+        "@acpaas-ui/ngx-leaflet": "^6.0.0",
         "@angular/common": "^15.2.9",
         "@angular/core": "^15.2.9",
         "@angular/forms": "^15.2.9"

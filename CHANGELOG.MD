@@ -12,6 +12,13 @@ All notable changes to this project will be documented in this file.
 -->
 
 ## [Unreleased]
+
+## [3.1.1] - 2023-07-03
+
+### Fixed
+- Fixed dependency tree
+
+
 ## [3.1.0] - 2023-07-03
 
 ### Added
@@ -23,32 +30,10 @@ All notable changes to this project will be documented in this file.
 ## [3.0.0] - 2023-06-15
 
 ## Changed
+- Update to Node 18 and Core Branding v6
+- Use latest ngx-leaflet version
+- Use latest ngx-icon version
 
--   Out of beta
-
-## [3.0.0-beta.3] - 2023-06-15
-
-## Fixed
-
--   Fix build
-
-## [3.0.0-beta.2] - 2023-06-15
-
-## Changed
-
--   Use latest ngx-leaflet version everywhere
-
-## [3.0.0-beta.1] - 2023-06-15
-
-## Changed
-
--   Use latest ngx-icon version
-
-## [3.0.0-beta.0] - 2023-06-15
-
-## Changed
-
--   Update to Node 18 and Core Branding v6
 
 ## [2.5.0] - 2023-01-30
 
@@ -201,7 +186,10 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release.
 
-[Unreleased]: https://github.com/digipolisantwerp/location-viewer_widget_angular/compare/v2.5.0...HEAD
+[Unreleased]: https://github.com/digipolisantwerp/location-viewer_widget_angular/compare/v3.1.1...HEAD
+[3.1.1]: https://github.com/digipolisantwerp/location-viewer_widget_angular/compare/v3.1.0...v3.1.1
+[3.1.0]: https://github.com/digipolisantwerp/location-viewer_widget_angular/compare/v3.0.0...v3.1.0
+[3.0.0]: https://github.com/digipolisantwerp/location-viewer_widget_angular/compare/v2.5.0...v3.0.0
 [2.5.0]: https://github.com/digipolisantwerp/location-viewer_widget_angular/compare/v2.4.0...v2.5.0
 [2.4.0]: https://github.com/digipolisantwerp/location-viewer_widget_angular/compare/v2.3.1...v2.4.0
 [2.3.1]: https://github.com/digipolisantwerp/location-viewer_widget_angular/compare/v2.3.0...v2.3.1
