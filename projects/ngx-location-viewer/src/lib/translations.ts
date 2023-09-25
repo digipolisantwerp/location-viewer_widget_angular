@@ -16,7 +16,7 @@ export const DUTCH_TRANSLATIONS: Translations = {
     close: 'Sluiten',
     selectDefault: 'Selecteer default basislaag',
     selectSpecific: 'Selecteer specifieke basislaag',
-    operationalLayer: 'Operationele laag:',
+    operationalLayer: 'Operationele laag',
     supportingLayers: 'Ondersteunende lagen',
     showLayer: 'Toon laag',
     hideLayer: 'Verberg laag',
