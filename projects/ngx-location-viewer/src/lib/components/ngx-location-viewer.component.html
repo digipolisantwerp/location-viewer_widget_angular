@@ -2,7 +2,7 @@
     <div #leafletsidebar tabindex="0" class="sidebar" *ngIf="hasSidebar && showSidebar">
         <div class="sidebar__header">
             <button
-                class="a-button-transparent a-button--default has-icon sidebar__close-button"
+                class="a-button a-button--text a-button--default has-icon sidebar__close-button"
                 [attr.aria-label]="translations.close"
                 (click)="toggleSidebar()"
             >
@@ -25,7 +25,7 @@
         <button
             *ngIf="hasSidebar"
             type="button"
-            class="a-button a-button--small has-icon a-button--block u-margin-bottom-xs"
+            class="a-button a-button--s has-icon a-button--block u-margin-bottom-xs"
             name="toggle-layermanagement"
             [title]="showSidebar ? translations.closeSidebar : translations.openSidebar"
             [attr.aria-label]="showSidebar ? translations.closeSidebar : translations.openSidebar"
@@ -38,9 +38,8 @@
             <div *ngIf="leafletMap.operationalLayer && showSelectionTools" class="m-button-group m-button-group--horizontal">
                 <button
                     type="button"
-                    class="a-button--small has-icon"
+                    class="a-button a-button--s has-icon"
                     [ngClass]="{
-                        'a-button': !currentButton.startsWith(buttonActions.select),
                         'a-button-outline': currentButton.startsWith(buttonActions.select)
                     }"
                     [attr.aria-label]="translations.select"
@@ -52,9 +51,8 @@
                 <div *ngIf="currentButton.startsWith(buttonActions.select)">
                     <button
                         type="button"
-                        class="a-button--small has-icon"
+                        class="a-button a-button--s has-icon"
                         [ngClass]="{
-                            'a-button': currentButton !== buttonActions.selectRectangle,
                             'a-button-outline': currentButton === buttonActions.selectRectangle
                         }"
                         (click)="activeButtonChange(buttonActions.selectRectangle)"
@@ -65,9 +63,8 @@
                     </button>
                     <button
                         type="button"
-                        class="a-button--small has-icon"
+                        class="a-button a-button--s has-icon"
                         [ngClass]="{
-                            'a-button': currentButton !== buttonActions.selectPolygon,
                             'a-button-outline': currentButton === buttonActions.selectPolygon
                         }"
                         (click)="activeButtonChange(buttonActions.selectPolygon)"
@@ -80,9 +77,8 @@
                         <button
                             *ngIf="availableFilterLayers?.length > 0"
                             type="button"
-                            class="a-button a-button--small has-icon a-button--block"
+                            class="a-button a-button--s has-icon a-button--block"
                             [ngClass]="{
-                                'a-button': currentButton !== buttonActions.selectZone,
                                 'a-button-outline': currentButton === buttonActions.selectZone
                             }"
                             (click)="activeButtonChange(buttonActions.selectZone)"
@@ -93,7 +89,7 @@
                         </button>
                     </ng-container>
                 </div>
-                <div class="a-input a-input--small has-icon-right u-margin-left-xs">
+                <div class="a-input a-input--s has-icon-right u-margin-left-xs">
                     <ng-container *ngIf="filterLayers$ | async as availableFilterLayers">
                         <div
                             class="a-input__wrapper"
@@ -121,9 +117,8 @@
             <div class="m-button-group m-button-group--horizontal" *ngIf="showMeasureTools">
                 <button
                     type="button"
-                    class="a-button--small has-icon"
+                    class="a-button a-button--s has-icon"
                     [ngClass]="{
-                        'a-button': !currentButton.startsWith(buttonActions.measurement),
                         'a-button-outline': currentButton.startsWith(buttonActions.measurement)
                     }"
                     (click)="activeButtonChange(buttonActions.measurement)"
@@ -135,9 +130,8 @@
                 <div *ngIf="currentButton.startsWith(buttonActions.measurement)">
                     <button
                         type="button"
-                        class="a-button--small has-icon"
+                        class="a-button a-button--s has-icon"
                         [ngClass]="{
-                            'a-button': currentButton !== buttonActions.distance,
                             'a-button-outline': currentButton === buttonActions.distance
                         }"
                         (click)="activeButtonChange(buttonActions.distance)"
@@ -148,9 +142,8 @@
                     </button>
                     <button
                         type="button"
-                        class="a-button--small has-icon"
+                        class="a-button a-button--s has-icon"
                         [ngClass]="{
-                            'a-button': currentButton !== buttonActions.area,
                             'a-button-outline': currentButton === buttonActions.area
                         }"
                         (click)="activeButtonChange(buttonActions.area)"
@@ -163,9 +156,8 @@
             </div>
             <button
                 type="button"
-                class="a-button--small has-icon"
+                class="a-button a-button--s has-icon"
                 [ngClass]="{
-                    'a-button': currentButton !== buttonActions.whatishere,
                     'a-button-outline': currentButton === buttonActions.whatishere
                 }"
                 (click)="activeButtonChange(buttonActions.whatishere)"
@@ -183,7 +175,7 @@
         <div class="m-button-group m-button-group--vertical">
             <button
                 type="button"
-                class="a-button a-button--small has-icon a-button--block button-zoom-in"
+                class="a-button a-button--s has-icon a-button--block button-zoom-in"
                 (click)="zoomIn()"
                 [attr.aria-label]="translations.zoomIn"
                 [title]="translations.zoomIn"
@@ -192,7 +184,7 @@
             </button>
             <button
                 type="button"
-                class="a-button a-button--small has-icon a-button--block button-zoom-out"
+                class="a-button a-button--s has-icon a-button--block button-zoom-out"
                 (click)="zoomOut()"
                 [attr.aria-label]="translations.zoomOut"
                 [title]="translations.zoomOut"
@@ -204,7 +196,7 @@
         <div *ngIf="tileLayer" class="m-button-group map-layer-toggle u-margin-top-xs">
             <button
                 type="button"
-                class="a-button a-button--small"
+                class="a-button a-button--s"
                 (click)="toggleTileLayer()"
                 [disabled]="isDefaultTileLayer"
                 [attr.aria-label]="translations.selectDefault"
@@ -213,7 +205,7 @@
             </button>
             <button
                 type="button"
-                class="a-button a-button--small"
+                class="a-button a-button--s"
                 (click)="toggleTileLayer(true)"
                 [disabled]="isCustomTileLayer"
                 [attr.aria-label]="translations.selectSpecific"
