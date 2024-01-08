@@ -17,6 +17,7 @@
         "build-lib": "ng build ngx-location-viewer && npm run copy-files && npm run npm-pack"
     },
     "dependencies": {
+        "@a-ui/core": "^6.5.0",
         "@acpaas-ui/ngx-icon": "^6.0.0",
         "@acpaas-ui/ngx-leaflet": "^6.0.0",
         "@geoman-io/leaflet-geoman-free": "^2.7.0",
