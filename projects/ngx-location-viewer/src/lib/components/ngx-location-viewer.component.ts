@@ -231,7 +231,7 @@ export class NgxLocationViewerComponent implements OnInit, OnChanges, OnDestroy 
         switch (action) {
           case ButtonActions.whatishere:
             const customDiv = document.createElement('div');
-            customDiv.innerHTML = `<aui-icon style="font-size: 1.6rem; color: var(--THEME1-600);" class="ai ai-pin-3">
+            customDiv.innerHTML = `<aui-icon class="whatishere-click-marker ai ai-pin-3">
                                         <svg aria-hidden="true">
                                           <use href="#ai-pin-3"></use>
                                         </svg><!--bindings={}-->
@@ -242,7 +242,7 @@ export class NgxLocationViewerComponent implements OnInit, OnChanges, OnDestroy 
                     icon: L.divIcon({
                       html: customDiv,
                       className: '', // Needs to be set to '' to reset the default className that will give default styles.
-                      iconAnchor: [12,32],
+                      iconAnchor: [13,32],
                       popupAnchor: [1,-30]
                     })
                   }
@@ -533,7 +533,7 @@ export class NgxLocationViewerComponent implements OnInit, OnChanges, OnDestroy 
                                 const address = x.addressDetail[0];
                                 const marker = this.leafletMap.addHtmlMarker(
                                     address.addressPosition.wgs84,
-                                    this.leafletMap.getHtmlMarker('#000000', 'ai-pin', '16px', { top: '-3px', left: '2px' }),
+                                    this.leafletMap.getHtmlMarker('var(--THEME1-600)', 'ai-pin', '16px', { top: '-3px', left: '2px' }),
                                 );
                                 const content = this.locationViewerHelper.getWhatisherePopupContent(address);
                                 this.leafletMap.addPopupToLayer(e.marker, content, true, marker);
