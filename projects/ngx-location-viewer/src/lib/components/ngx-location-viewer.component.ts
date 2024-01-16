@@ -22,7 +22,7 @@ import { GeofeatureDetail } from '../types/geoapi/geofeature-detail.model';
 import { LeafletTileLayerModel, LeafletTileLayerType } from '../types/leaflet-tile-layer.model';
 import { Translations } from '../types/translations.model';
 import { DUTCH_TRANSLATIONS } from '../translations';
-import { LatLngExpression } from 'leaflet';
+import L , { LatLngExpression } from 'leaflet';
 
 @Component({
     selector: 'aui-location-viewer',
@@ -229,8 +229,24 @@ export class NgxLocationViewerComponent implements OnInit, OnChanges, OnDestroy 
 
         this.currentButton = action;
         switch (action) {
-            case ButtonActions.whatishere:
-                this.leafletMap.map.pm.enableDraw(Shapes.Marker);
+          case ButtonActions.whatishere:
+            const customDiv = document.createElement('div');
+            customDiv.innerHTML = `<aui-icon class="whatishere-click-marker ai ai-pin-3">
+                                        <svg aria-hidden="true">
+                                          <use href="#ai-pin-3"></use>
+                                        </svg><!--bindings={}-->
+                                   </aui-icon>`;
+
+            this.leafletMap.map.pm.enableDraw(Shapes.Marker,{
+                  markerStyle : {
+                    icon: L.divIcon({
+                      html: customDiv,
+                      className: '', // Needs to be set to '' to reset the default className that will give default styles.
+                      iconAnchor: [13,32],
+                      popupAnchor: [1,-30]
+                    })
+                  }
+                });
                 break;
             case ButtonActions.distance:
                 this.leafletMap.map.pm.enableDraw(Shapes.Line);
@@ -517,7 +533,7 @@ export class NgxLocationViewerComponent implements OnInit, OnChanges, OnDestroy 
                                 const address = x.addressDetail[0];
                                 const marker = this.leafletMap.addHtmlMarker(
                                     address.addressPosition.wgs84,
-                                    this.leafletMap.getHtmlMarker('#000000', 'ai-location-target-1', '16px', { top: '-3px', left: '2px' }),
+                                    this.leafletMap.getHtmlMarker('var(--THEME1-600)', 'ai-pin', '16px', { top: '-3px', left: '2px' }),
                                 );
                                 const content = this.locationViewerHelper.getWhatisherePopupContent(address);
                                 this.leafletMap.addPopupToLayer(e.marker, content, true, marker);
@@ -536,11 +552,11 @@ export class NgxLocationViewerComponent implements OnInit, OnChanges, OnDestroy 
     private initiateCurrentPosition(currentPosition: LatLngExpression = this.currentPosition): void {
         if (currentPosition !== null) {
             this.leafletMap.setView(currentPosition, this.defaultZoom);
-  
+
             if (this.currentPositionMarker !== null) {
               this.leafletMap.removeLayer(this.currentPositionMarker);
-            } 
-  
+            }
+
             this.currentPositionMarker = this.leafletMap.addMarker(currentPosition, { keyboard: false, interactive: false });
         }
     }
