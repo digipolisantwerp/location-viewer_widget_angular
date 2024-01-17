@@ -13,27 +13,34 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [3.1.2] - 2023-07-03
+
+### Changed
+
+-   Changed the icons for 'What is here'
+
 ## [3.1.1] - 2023-07-03
 
 ### Fixed
-- Fixed dependency tree
 
+-   Fixed dependency tree
 
 ## [3.1.0] - 2023-07-03
 
 ### Added
-- Option to pass currentPosition to initialise component with a position marker
-- Updating the value of currentPosition will redraw te position marker
-- Using the currentPosition will overrule the mapCenter position on load
-- Updated the example app with a locate me button
+
+-   Option to pass currentPosition to initialise component with a position marker
+-   Updating the value of currentPosition will redraw te position marker
+-   Using the currentPosition will overrule the mapCenter position on load
+-   Updated the example app with a locate me button
 
 ## [3.0.0] - 2023-06-15
 
 ## Changed
-- Update to Node 18 and Core Branding v6
-- Use latest ngx-leaflet version
-- Use latest ngx-icon version
 
+-   Update to Node 18 and Core Branding v6
+-   Use latest ngx-leaflet version
+-   Use latest ngx-icon version
 
 ## [2.5.0] - 2023-01-30
 
