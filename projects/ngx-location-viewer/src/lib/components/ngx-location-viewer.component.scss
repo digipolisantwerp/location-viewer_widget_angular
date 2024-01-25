@@ -44,6 +44,10 @@ $spacer-xs: $spacer * 0.5 !default;
     select {
         margin-top: 0;
     }
+
+  .a-button--outlined{
+    --btn-bg-color: var(--THEME1-100);
+  }
 }
 
 .sidebar {

@@ -178,7 +178,7 @@ class ExampleComponent {
 ## Demo
 
 Live demo can be found on:
-https://https://locationviewerweb-o.antwerpen.be/
+https://locationviewerweb-o.antwerpen.be/
 
 You can also choose to test it locally:
 
