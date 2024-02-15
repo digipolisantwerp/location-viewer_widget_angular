@@ -27,6 +27,10 @@ $spacer-xs: $spacer * 0.5 !default;
     .whatishere-image {
         overflow: hidden;
     }
+    .whatishere-click-marker {
+        font-size: 1.6rem;
+        color: var(--THEME1-600);
+    }
 }
 
 //fix toggle buttons outline difference button had -margin-top -1x, .a-button-outline had margin-bottom: -1px
@@ -40,6 +44,10 @@ $spacer-xs: $spacer * 0.5 !default;
     select {
         margin-top: 0;
     }
+
+  .a-button--outlined{
+    --btn-bg-color: var(--THEME1-100);
+  }
 }
 
 .sidebar {
@@ -55,3 +63,4 @@ $spacer-xs: $spacer * 0.5 !default;
         top: -$spacer-xs;
     }
 }
+
