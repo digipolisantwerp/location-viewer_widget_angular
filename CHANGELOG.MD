@@ -19,6 +19,10 @@ All notable changes to this project will be documented in this file.
 
 -   Changed the icons for 'What is here'
 
+### Fixed
+
+-   Buttons; all small, using correct icons, styling close button, ...
+
 ## [3.1.1] - 2023-07-03
 
 ### Fixed
