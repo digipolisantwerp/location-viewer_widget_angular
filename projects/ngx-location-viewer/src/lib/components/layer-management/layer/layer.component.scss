@@ -1,34 +1,35 @@
-$spacer: 1.5rem !default; // 24px
-$text-color: #141414 !default;
+@import '@a-ui/core/src/styles/quarks/_quarks.colors';
+@import '@a-ui/core/src/styles/quarks/_quarks.variables';
 
 .layer__toggle {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .layer__icon {
-    left: -$spacer;
-    position: absolute;
-    top: 0.125rem;
+  left: calc(-1 * var(--SPACER));
+  position: absolute;
+  top: 0.125rem;
 }
 
 .layer__reveal {
-    background: transparent;
-    border: none;
-    color: $text-color;
-    padding: 0;
+  background: transparent;
+  border: none;
+  color: var(--TEXT-COLOR);
+  cursor: pointer;
+  padding: 0;
 }
 
 .a-spinner {
-    left: -2rem;
-    position: absolute;
-    top: 0rem;
+  left: -2rem;
+  position: absolute;
+  top: 0rem;
 }
 
 .a-input__checkbox {
-    label {
-        hyphens: auto;
-        overflow-wrap: break-word;
-        word-break: break-word;
-        word-wrap: break-word;
-    }
+  label {
+    hyphens: auto;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    word-wrap: break-word;
+  }
 }

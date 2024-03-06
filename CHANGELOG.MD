@@ -13,11 +13,24 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [3.1.3] - 2024-03-06
+
+### Fixed
+
+-   Fixed double 'What is here' icon
+-   Fixed behaviour of buttons
+-   Fixed WCAG compliancy of buttons
+
+### Changed
+
+-   Added translation for "Layers"
+-   Optimized translations
+
 ## [3.1.2] - 2023-07-03
 
 ### Changed
 
--   Changed the icons for 'What is here'
+-   Changed the icons for 'what is here'
 
 ### Fixed
 
@@ -197,7 +210,9 @@ All notable changes to this project will be documented in this file.
 
 -   Initial release.
 
-[Unreleased]: https://github.com/digipolisantwerp/location-viewer_widget_angular/compare/v3.1.1...HEAD
+[Unreleased]: https://github.com/digipolisantwerp/location-viewer_widget_angular/compare/v3.1.3...HEAD
+[3.1.3]: https://github.com/digipolisantwerp/location-viewer_widget_angular/compare/v3.1.2...v3.1.3
+[3.1.2]: https://github.com/digipolisantwerp/location-viewer_widget_angular/compare/v3.1.1...v3.1.2
 [3.1.1]: https://github.com/digipolisantwerp/location-viewer_widget_angular/compare/v3.1.0...v3.1.1
 [3.1.0]: https://github.com/digipolisantwerp/location-viewer_widget_angular/compare/v3.0.0...v3.1.0
 [3.0.0]: https://github.com/digipolisantwerp/location-viewer_widget_angular/compare/v2.5.0...v3.0.0
