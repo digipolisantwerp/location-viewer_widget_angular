@@ -6,14 +6,14 @@
         [(ngModel)]="layer.visible" (change)="onChangeVisibility()" />
       <label for="layer-{{ layer?.id }}">{{ layer?.name }}</label>
       <button *ngIf="showLayers() || showLegend()" [attr.aria-label]="
-                    showLayers()
-                        ? open
-                            ? translations.showLayer
-                            : translations.hideLayer
-                        : open
-                        ? translations.showLegend
-                        : translations.hideLegend
-                " class="layer__toggle u-margin-left-xs layer__reveal" (click)="open = !open">
+        showLayers()
+            ? open
+                ? translations.showLayer
+                : translations.hideLayer
+            : open
+            ? translations.showLegend
+            : translations.hideLegend
+        " class="layer__toggle u-margin-left-xs layer__reveal" (click)="open = !open">
         <aui-icon *ngIf="open" name="ai-arrow-up-1"></aui-icon>
         <aui-icon *ngIf="!open" name="ai-arrow-down-1"></aui-icon>
       </button>
