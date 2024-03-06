@@ -1,29 +1,23 @@
 <div class="u-container">
-    <div class="u-margin-top u-margin-bottom">
-        <h1 class="h5 u-margin-bottom">Location Viewer Widget</h1>
-    </div>
-    <div class="u-bg-light u-margin-top u-margin-bottom">
-        <aui-location-viewer
-            #locationViewer
-            [geoApiBaseUrl]="geoApiBaseUrl"
-            [showLayerManagement]="showLayerManagement"
-            [supportingLayerOptions]="supportingLayerOptions"
-            [operationalLayerOptions]="operationalLayerOptions"
-            [filterLayers]="filterLayers"
-            [currentPosition]="currentPosition"
-            (filteredResult)="updateResult($event)"
-            (markerClicked)="onClickOperationalMarker($event)"
-        >
-            <div controls bottom right>
-                <button type="button" class="a-button a-button--s has-icon" [disabled]="locating" (click)="handler()">
-                    <aui-icon name="ai-compass-arrow"></aui-icon>
-                </button>
-            </div>
-        </aui-location-viewer>
-    </div>
-    <button class="a-button" aria-label="Change configuration" (click)="changeSettings()">Change configuration</button>
-    <div *ngIf="result">
-        <p>Aantal resultaten: {{ result.length }}</p>
-        <pre>{{ result.slice(0, 10) | json }}</pre>
-    </div>
+  <div class="u-margin-top u-margin-bottom">
+    <h1 class="h5 u-margin-bottom">Location Viewer Widget</h1>
+  </div>
+  <div class="u-bg-light u-margin-top u-margin-bottom">
+    <aui-location-viewer #locationViewer [geoApiBaseUrl]="geoApiBaseUrl" [showLayerManagement]="showLayerManagement"
+      [supportingLayerOptions]="supportingLayerOptions" [operationalLayerOptions]="operationalLayerOptions"
+      [filterLayers]="filterLayers" [currentPosition]="currentPosition" (filteredResult)="updateResult($event)"
+      (markerClicked)="onClickOperationalMarker($event)">
+      <div controls bottom right>
+        <button type="button" class="a-button has-icon" (click)="handler()" aria-label="Go to my location"
+          title="Go to my location">
+          <aui-icon name="ai-compass-arrow"></aui-icon>
+        </button>
+      </div>
+    </aui-location-viewer>
+  </div>
+  <button class="a-button" aria-label="Change configuration" (click)="changeSettings()">Change configuration</button>
+  <div *ngIf="result">
+    <p>Number of results: {{ result.length }}</p>
+    <pre>{{ result.slice(0, 10) | json }}</pre>
+  </div>
 </div>

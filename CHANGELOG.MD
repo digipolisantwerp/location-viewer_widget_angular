@@ -13,6 +13,17 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [3.1.3] - 2024-03-06
+
+### Fixed
+
+-   Fixed double 'What is here' icon
+-   Fixed behaviour of buttons
+
+### Changed
+
+-   Fixed WCAG compliancy of buttons
+
 ## [3.1.2] - 2023-07-03
 
 ### Changed
