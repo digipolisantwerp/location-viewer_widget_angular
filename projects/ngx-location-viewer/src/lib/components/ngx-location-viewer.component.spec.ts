@@ -1,9 +1,8 @@
 import { LeafletModule } from '@acpaas-ui/ngx-leaflet';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { Button } from 'protractor';
 import { LocationViewerMap } from '../classes/location-viewer-map';
 import { MAP_SERVICE_PROVIDER } from '../map.provider';
 import { GeoApiService } from '../services/geoapi.service';
@@ -16,6 +15,7 @@ import { Shapes } from '../types/geoman/geoman.types';
 import { LayerLegendComponent } from './layer-management/layer-legend/layer-legend.component';
 import { LayerManagementComponent } from './layer-management/layer-management.component';
 import { LayerComponent } from './layer-management/layer/layer.component';
+import { IconModule } from '@acpaas-ui/ngx-icon';
 
 import { NgxLocationViewerComponent } from './ngx-location-viewer.component';
 
@@ -23,10 +23,10 @@ describe('NgxLocationViewerComponent', () => {
   let component: NgxLocationViewerComponent;
   let fixture: ComponentFixture<NgxLocationViewerComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [NgxLocationViewerComponent, LayerManagementComponent, LayerComponent, LayerLegendComponent],
-      imports: [CommonModule, HttpClientModule, FormsModule, LeafletModule],
+      imports: [CommonModule, HttpClientModule, IconModule, FormsModule, LeafletModule],
       providers: [MAP_SERVICE_PROVIDER, MapServerService, LayerService, GeoApiService, LocationViewerHelper],
     }).compileComponents();
   }));
@@ -70,7 +70,12 @@ describe('NgxLocationViewerComponent', () => {
         expectedAction: ButtonActions.area,
         activeDraw: Shapes.Polygon,
       },
-      { newAction: ButtonActions.area, currentAction: ButtonActions.area, expectedAction: ButtonActions.none, activeDraw: undefined },
+      {
+        newAction: ButtonActions.area,
+        currentAction: ButtonActions.area,
+        expectedAction: ButtonActions.none,
+        activeDraw: undefined,
+      },
       {
         newAction: ButtonActions.distance,
         currentAction: ButtonActions.none,

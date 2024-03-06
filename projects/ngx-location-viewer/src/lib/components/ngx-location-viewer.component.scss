@@ -1,52 +1,68 @@
-$spacer: 1.5rem !default; // 24px
-$spacer-xs: $spacer * 0.5 !default;
+@import '@a-ui/core/dist/assets/styles/quarks/_quarks.variables.scss';
 
 ::ng-deep {
-    .whatishere-wrapper {
-        overflow: hidden;
-        width: 17rem;
-    }
+  .whatishere-wrapper {
+    overflow: hidden;
+    width: 17rem;
+  }
 
-    .whatishere-title {
-        margin: calc($spacer-xs / 2) 0;
-    }
+  .whatishere-title {
+    margin: var(--SPACER-XS) 0;
+  }
 
-    .whatishere-content {
-        display: grid;
-        float: left;
-        gap: 0 $spacer-xs;
-        grid-template-columns: 1fr 3fr;
-        margin-top: calc($spacer-xs / 2);
-        width: 14rem;
-    }
+  .whatishere-content {
+    display: grid;
+    float: left;
+    gap: 0 var(--SPACER-XS);
+    grid-template-columns: 1fr 3fr;
+    margin-top: calc($spacer-xs / 2);
+    width: 14rem;
+  }
 
-    .whatishere-type {
-        width: 3rem;
-    }
+  .whatishere-type {
+    width: 3rem;
+  }
 
-    .whatishere-image {
-        overflow: hidden;
-    }
-    .whatishere-click-marker {
-        font-size: 1.6rem;
-        color: var(--THEME1-600);
-    }
+  .whatishere-image {
+    overflow: hidden;
+  }
+
+  .whatishere-click-marker {
+    font-size: 1.6rem;
+    color: var(--THEME1-600);
+  }
 }
 
-//fix toggle buttons outline difference button had -margin-top -1x, .a-button-outline had margin-bottom: -1px
 .m-button-group {
-    .m-button-group {
-        margin-bottom: -1px;
-    }
+  &.m-button-group--vertical {
+    >.m-button-group--helper {
+      display: flex;
 
-    .a-button,
-    .a-button-outline,
-    select {
-        margin-top: 0;
-    }
+      .m-button-group--horizontal {
+        margin-left: -1px;
 
-  .a-button--outlined{
+        .a-button:first-child {
+          border-left: var(--BORDER-WIDTH) solid var(--btn-hover-border-color);
+        }
+      }
+
+      &:not(:first-child)>.a-button:not(.a-button--outlined) {
+        border-top: var(--BORDER-WIDTH) solid var(--btn-hover-border-color);
+      }
+    }
+  }
+
+  >.m-button-group {
+    height: var(--SPACER-XL);
+  }
+
+  .a-button--outlined {
     --btn-bg-color: var(--THEME1-100);
+    margin-right: 0;
+
+    +.a-input {
+      margin-bottom: -1px;
+    }
   }
 }
 
@@ -55,12 +71,11 @@ $spacer-xs: $spacer * 0.5 !default;
 }
 
 .sidebar__header {
-    position: relative;
+  position: relative;
 
-    .sidebar__close-button {
-        position: absolute;
-        right: -$spacer-xs;
-        top: -$spacer-xs;
-    }
+  .sidebar__close-button {
+    position: absolute;
+    right: calc(var(--SPACER-S) * -1);
+    top: calc(var(--SPACER-S) * -1);
+  }
 }
-

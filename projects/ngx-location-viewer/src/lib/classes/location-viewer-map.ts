@@ -69,21 +69,19 @@ export class LocationViewerMap extends LeafletMap {
         },
       };
 
-      if (layer.geometryType === GeometryTypes.esriGeometryPolygon || layer.geometryType === GeometryTypes.esriGeometryPolyline)
-      {
+      if (layer.geometryType === GeometryTypes.esriGeometryPolygon || layer.geometryType === GeometryTypes.esriGeometryPolyline) {
         // style is used to style lines and polygons
         featureLayerOptions.style = (feature) => {
           if (layer.colors && layer.colors.length > 0) {
             let colorItem = layer.colors[0];
-            
+
             // check if more coloritems are avaiable to check for custom style by value
-            if (layer.colors.length > 1)
-            {
+            if (layer.colors.length > 1) {
               const colorValue = feature.properties[layer.styleField];
               colorItem = layer.colors.find((x) => x.value === colorValue);
             }
 
-            return  {...colorItem, ...operationalLayerOptions.layerColor};
+            return { ...colorItem, ...operationalLayerOptions.layerColor };
           }
         }
       } else {
