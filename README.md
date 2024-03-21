@@ -2,7 +2,7 @@
 
 The Location Viewer Smart Widget UI provides an easy to use interface for displaying locations or addresses within the city of Antwerp.
 
-This library was tested in Angular 8.
+This library was tested in Angular 15.
 
 <img src="location-viewer.png" alt="Voorbeeld van de Location Viewer widget." width="1152" style="max-width:1152px;width:100%">
 
@@ -33,7 +33,7 @@ Finally include the required styles:
 Add Antwerp core branding stylesheet in your index.html file:
 
 ```html
-<link rel="stylesheet" href="https://cdn.antwerpen.be/core_branding_scss/6.6.0/main.min.css">
+<link rel="stylesheet" href="https://cdn.antwerpen.be/core_branding_scss/6.6.0/main.min.css" />
 ```
 
 Add required leaflet styles in your angular.json file.
@@ -47,6 +47,7 @@ Add required leaflet styles in your angular.json file.
     "node_modules/leaflet.markercluster/dist/MarkerCluster.css"
 ]
 ```
+
 Next, you will need to configure your BFF to proxy all Geo API request to the correct service.
 
 The concept remains the same for different technologies:
@@ -57,20 +58,19 @@ Create a contract with the "GEOAPI" on the api-store
 ![screenshot](api-store.PNG)
 
 ### Usage
+
 ```html
-<aui-location-viewer
-    ...
-    (filteredResult)="onfilteredResult($event)"
-></aui-location-viewer>
+<aui-location-viewer ... (filteredResult)="onfilteredResult($event)"></aui-location-viewer>
 ```
 
 **Minimal example**
+
 ```html
 <aui-location-viewer></aui-location-viewer>
 ```
 
-
 **Full example**
+
 ```html
 <aui-location-viewer
     [geoApiBaseUrl]="geoApiBaseUrl"
@@ -78,7 +78,7 @@ Create a contract with the "GEOAPI" on the api-store
     [mapCenter]="mapCenter"
     [hasSidebar]="hasSidebar"
     [showSidebar]="showSidebar"
-    [showLayerManagement ]="showLayerManagement"
+    [showLayerManagement]="showLayerManagement"
     [showSelectionTools]="showSelectionTools"
     [showMeasureTools]="showMeasureTools"
     [showWhatIsHereButton]="showWhatIsHereButton"
@@ -96,34 +96,31 @@ Create a contract with the "GEOAPI" on the api-store
     (filteredResult)="onFilteredResult($event)"
     (markerClicked)="onMarkerClicked($event)"
 >
-
-<p>This is shown inside the leaflet sidebar if hasSidebar is set to true.</p>
-
+    <p>This is shown inside the leaflet sidebar if hasSidebar is set to true.</p>
 </aui-location-viewer>
 ```
 
 **Explanation layer types**
 
-* Operational layer
-Operational layer is the main layer of the location viewer widget. After you have provided the setting to build this layer it is possible to filter this layer with selection tools (rectangle, polygon and filterlayer). After each selection the location viewer widget will push the filtered results of the layer.
-This layer will be initialized in ngOnInit with settings passed through the operationalLayerOptions input param. There are 2 possible ways to build this layer:
-  * Mapserver (provide url (valid mapserver url), layerid and where properties)
-    * url: url of the mapserver
-    * layerid: layerid of the layer on the provided mapserver url
-    * where: an optional expression to filter features server side (mapserver)
-    where clause will be used as param on the following request url/layerid/query, for additional info:
-    https://desktop.arcgis.com/en/arcmap/latest/map/working-with-layers/sql-reference-for-query-expressions-used-in-arcgis.htm
-  * Markers (provide markers, isVisible and name properties)
-* Supporting layer
-Supporting layer is only there to visualize certain objects in leaflet. This layer will be initialized in ngOnInit with settings passed through the supportingLayerOptions input param.
-* Filter layers
-Filter layers are used to filter the operational layer by a specific object that is a polygon. After clicking on this layer the operational layer will be filtered by the objects geometry. This layer will be initialize in ngOnInit with settings passed through the filterLayerOptions input param. If name, popupLabel or propertyToDisplay properties are null, information will be used from layer information mapserver (name & displayfield).
+-   Operational layer
+    Operational layer is the main layer of the location viewer widget. After you have provided the setting to build this layer it is possible to filter this layer with selection tools (rectangle, polygon and filterlayer). After each selection the location viewer widget will push the filtered results of the layer.
+    This layer will be initialized in ngOnInit with settings passed through the operationalLayerOptions input param. There are 2 possible ways to build this layer:
+    -   Mapserver (provide url (valid mapserver url), layerid and where properties)
+        -   url: url of the mapserver
+        -   layerid: layerid of the layer on the provided mapserver url
+        -   where: an optional expression to filter features server side (mapserver)
+            where clause will be used as param on the following request url/layerid/query, for additional info:
+            https://desktop.arcgis.com/en/arcmap/latest/map/working-with-layers/sql-reference-for-query-expressions-used-in-arcgis.htm
+    -   Markers (provide markers, isVisible and name properties)
+-   Supporting layer
+    Supporting layer is only there to visualize certain objects in leaflet. This layer will be initialized in ngOnInit with settings passed through the supportingLayerOptions input param.
+-   Filter layers
+    Filter layers are used to filter the operational layer by a specific object that is a polygon. After clicking on this layer the operational layer will be filtered by the objects geometry. This layer will be initialize in ngOnInit with settings passed through the filterLayerOptions input param. If name, popupLabel or propertyToDisplay properties are null, information will be used from layer information mapserver (name & displayfield).
 
 For working examples of the layer types check [demo](##demo), this is a working page with a form to test all the possible parameters.
 
 ```ts
 class ExampleComponent {
-
     /* Url to the backend-for-frontend (bff) Should function as pass through to the Geo API. */
     @Input() geoApiBaseUrl: string;
     /* The default zoom level on map load. */
@@ -171,7 +168,6 @@ class ExampleComponent {
     @Output() filteredResult = new EventEmitter<GeofeatureDetail[] | OperationalMarker[] | any>();
     /* Operational layer clicked: fired when clicking on marker of operational layer */
     @Output() markerClicked = new EventEmitter<any>();
-
 }
 ```
 
@@ -183,6 +179,7 @@ https://locationviewerweb-o.antwerpen.be/
 You can also choose to test it locally:
 
 In the root directory run:
+
 ```
 npm install && ng build ngx-location-viewer && ng serve
 ```
@@ -192,16 +189,19 @@ This will install all required dependencies, create an optimized build for the l
 ## Local development
 
 Install required dependencies:
+
 ```
 npm install
 ```
 
 Rebuild library on changes
+
 ```
 npm run dev
 ```
 
 Start example project
+
 ```
 ng serve
 ```

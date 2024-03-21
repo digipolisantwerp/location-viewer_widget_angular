@@ -78,9 +78,9 @@
 
       <div *ngIf="showMeasureTools" class="m-button-group--helper">
         <button type="button" class="a-button has-icon" [ngClass]="{
-          '': !currentButton.startsWith(buttonActions.measurement),
-          'a-button--outlined': currentButton.startsWith(buttonActions.measurement)
-      } " (click)="activeButtonChange(buttonActions.measurement)" [title]="translations.measure"
+            '': !currentButton.startsWith(buttonActions.measurement),
+            'a-button--outlined': currentButton.startsWith(buttonActions.measurement)
+          }" (click)="activeButtonChange(buttonActions.measurement)" [title]="translations.measure"
           [attr.aria-label]="translations.measure">
           <aui-icon name="ai-ruler"></aui-icon>
         </button>
