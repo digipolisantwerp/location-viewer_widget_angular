@@ -231,9 +231,9 @@ export class NgxLocationViewerComponent implements OnInit, OnChanges, OnDestroy 
     switch (action) {
       case ButtonActions.whatishere:
         const customDiv = document.createElement('div');
-        customDiv.innerHTML = `<aui-icon class="whatishere-click-marker ai ai-pin-3">
+        customDiv.innerHTML = `<aui-icon class="whatishere-click-marker ai ai-pin">
                                         <svg aria-hidden="true">
-                                          <use href="#ai-pin-3"></use>
+                                          <use href="#ai-pin"></use>
                                         </svg><!--bindings={}-->
                                    </aui-icon>`;
 

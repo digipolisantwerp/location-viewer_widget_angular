@@ -32,7 +32,7 @@ export interface OperationalMarker {
   /* coordinates used to place marker on map */
   coordinate: OperationalMarkerCoordinate;
   color?: string;
-  /* Streamline icon class e.g. 'ai-pin-3'. You have to provide valid icon class otherwise marker won't be visible */
+  /* Streamline icon class e.g. 'ai-pin'. You have to provide valid icon class otherwise marker won't be visible */
   icon: string;
   /* icon size in pixels, default: 40px */
   size?: string;

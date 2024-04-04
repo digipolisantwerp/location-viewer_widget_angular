@@ -217,12 +217,12 @@ export class LocationViewerMap extends LeafletMap {
      * Defines the custom marker markup.
      */
     getHtmlMarker(
-        color: string = '#0057b7',
-        icon: string = 'ai-pin-3',
-        size: string = '40px',
+        color: string = 'var(--THEME1-600)',
+        icon: string = 'ai-pin',
+        size: string = 'var(--SPACER-XL)',
         position: { top: string; left: string } = {
-            top: '-36px',
-            left: '-5px',
+            top: 'calc(-1/2 * var(--SPACER-XL))',
+            left: 'calc(-1/2 * var(--SPACER-XL))',
         },
     ) {
         const markerStyle = `color: ${color}; font-size: ${size}; top: ${position.top}; left: ${position.left}`;
