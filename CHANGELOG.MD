@@ -13,6 +13,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Fixed
+
+-   Changed icon for 'What is here'
+
 ## [3.1.4] - 2024-03-21
 
 ### Fixed
