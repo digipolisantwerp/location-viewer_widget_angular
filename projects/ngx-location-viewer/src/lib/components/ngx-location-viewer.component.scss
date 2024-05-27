@@ -1,4 +1,5 @@
-@import '@a-ui/core/dist/assets/styles/quarks/_quarks.variables.scss';
+@import '@a-ui/core/src/styles/quarks/_quarks.colors';
+@import '@a-ui/core/src/styles/quarks/_quarks.variables';
 
 ::ng-deep {
   .whatishere-wrapper {
@@ -57,7 +58,6 @@
   }
 
   .a-button--outlined {
-    --btn-bg-color: var(--THEME1-100);
     margin-right: 0;
 
     +.a-input {

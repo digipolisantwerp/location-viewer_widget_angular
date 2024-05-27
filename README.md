@@ -78,8 +78,7 @@ Create a contract with the "GEOAPI" on the api-store
     [mapCenter]="mapCenter"
     [hasSidebar]="hasSidebar"
     [showSidebar]="showSidebar"
-    [showLayerManagement
-    ]="showLayerManagement"
+    [showLayerManagement]="showLayerManagement"
     [showSelectionTools]="showSelectionTools"
     [showMeasureTools]="showMeasureTools"
     [showWhatIsHereButton]="showWhatIsHereButton"

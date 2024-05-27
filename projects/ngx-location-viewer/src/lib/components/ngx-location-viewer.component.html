@@ -78,9 +78,9 @@
 
       <div *ngIf="showMeasureTools" class="m-button-group--helper">
         <button type="button" class="a-button has-icon" [ngClass]="{
-          '': !currentButton.startsWith(buttonActions.measurement),
-          'a-button--outlined': currentButton.startsWith(buttonActions.measurement)
-      } " (click)="activeButtonChange(buttonActions.measurement)" [title]="translations.measure"
+            '': !currentButton.startsWith(buttonActions.measurement),
+            'a-button--outlined': currentButton.startsWith(buttonActions.measurement)
+          }" (click)="activeButtonChange(buttonActions.measurement)" [title]="translations.measure"
           [attr.aria-label]="translations.measure">
           <aui-icon name="ai-ruler"></aui-icon>
         </button>
@@ -109,7 +109,7 @@
           'a-button--outlined': currentButton === buttonActions.whatishere
         }" (click)="activeButtonChange(buttonActions.whatishere)" *ngIf="showWhatIsHereButton"
         [title]="translations.whatIsHere" [attr.aria-label]="translations.whatIsHere">
-        <aui-icon name="ai-pin-3"></aui-icon>
+        <aui-icon name="ai-pin"></aui-icon>
       </button>
     </div>
     <ng-content select="[controls][top][left]"></ng-content>
