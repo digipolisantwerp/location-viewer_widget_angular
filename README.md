@@ -168,6 +168,8 @@ class ExampleComponent {
     @Output() filteredResult = new EventEmitter<GeofeatureDetail[] | OperationalMarker[] | any>();
     /* Operational layer clicked: fired when clicking on marker of operational layer */
     @Output() markerClicked = new EventEmitter<any>();
+    /* What is here location selected: fired when selecting a "What is here?" location */
+    @Output() whatIsHereSelected = new EventEmitter<any>();
 }
 ```
 
