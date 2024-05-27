@@ -11,7 +11,11 @@ All notable changes to this project will be documented in this file.
 "### Security" in case of vulnerabilities.
 -->
 
-## [Unreleased]
+## [3.2.0] - 2024-05-27
+
+### Added
+
+-   Allow to listen on "What is here?" events with "whatIsHereSelected".
 
 ## [3.1.5] - 2024-04-04
 
