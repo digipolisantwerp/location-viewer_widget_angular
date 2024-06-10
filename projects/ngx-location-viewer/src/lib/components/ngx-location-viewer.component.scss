@@ -2,6 +2,10 @@
 @import '@a-ui/core/src/styles/quarks/_quarks.variables';
 
 ::ng-deep {
+  .o-leaflet.aui-leaflet {
+    max-height: 100vh;
+  }
+
   .whatishere-wrapper {
     overflow: hidden;
     width: 17rem;
