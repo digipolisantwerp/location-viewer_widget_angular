@@ -60,6 +60,8 @@ export class NgxLocationViewerComponent implements OnInit, OnChanges, OnDestroy 
     @Input() defaultTileLayerLabel = 'Kaart';
     /* Custom leaflet tile layer, if provided, shows actions on the leaflet to toggle between default and custom tile layer. */
     @Input() tileLayer: LeafletTileLayerModel;
+    /* Sets the LocationViewer up to accept Vector based layer, instead of Raster based (default Raster based). */
+    @Input() tileLayerIsVectorBased: boolean = false;
     /**
      * The zoom level when a marker is selected.
      * If null the zoomlevel won't change after marker selection.
@@ -275,6 +277,8 @@ export class NgxLocationViewerComponent implements OnInit, OnChanges, OnDestroy 
         this.tileLayerType = custom ? LeafletTileLayerType.CUSTOM : LeafletTileLayerType.DEFAULT;
 
         if (custom) {
+          this.tileLayerIsVectorBased?
+            this.activeTileLayers.push(this.leafletMap.addVectorLayer(this.tileLayer.layer)):
             this.activeTileLayers.push(this.leafletMap.addTileLayer(this.tileLayer.layer));
         } else {
             this.activeTileLayers.push(this.leafletMap.addTileLayer(baseMapWorldGray));

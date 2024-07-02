@@ -14,6 +14,8 @@
             (filteredResult)="updateResult($event)"
             (markerClicked)="onClickOperationalMarker($event)"
             (whatIsHereSelected)="onWhatIsHereSelected($event)"
+            [tileLayerIsVectorBased] = vectorBased
+            [tileLayer]="vectorBased ? vectorTileLayer : normalTileLayer"
         >
             <div controls bottom right>
                 <button
@@ -28,7 +30,9 @@
             </div>
         </aui-location-viewer>
     </div>
-    <button class="a-button" aria-label="Change configuration" (click)="changeSettings()">Change configuration</button>
+    <button class="a-button" aria-label="Change configuration" (click)="changeOverlaySettings()">Change configuration</button>
+    <button class="a-button u-margin-left" aria-label="Switch to vector or tile layer view (On custom layer)" (click)="changeSettingsToVectorBased()">Switch to {{ vectorBased ? 'tile' : 'vector' }} layer view (On custom layer)</button>
+    <p class="h6 u-margin-top u-margin-bottom">To apply changes to the vector/tile layer view while on the custom map, switch to the default map and then back to the custom map.</p>
     <div *ngIf="result">
         <p>Number of results: {{ result.length }}</p>
         <pre>{{ result.slice(0, 10) | json }}</pre>
