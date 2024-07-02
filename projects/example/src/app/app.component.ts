@@ -23,9 +23,27 @@ export class AppComponent implements OnInit {
     result: GeofeatureDetail[];
     geoApiBaseUrl = 'https://geoapi-app1-o.antwerpen.be/v2/';
     showLayerManagement = true;
+    vectorBased = false
+
     supportingLayerOptions: SupportingLayerOptions = {
         url: 'https://geodata.antwerpen.be/arcgissql/rest/services/P_ToK/P_Tok_routeweek/Mapserver',
         layerIds: [143, 144, 145, 146, 147],
+    };
+
+    vectorTileLayer = {
+      layer: {
+        name: "Basemap_antwerpen_met_labels_20220218",
+        url: "https://tiles.arcgis.com/tiles/1KSVSmnHT2Lw9ea6/arcgis/rest/services/basemap_antwerpen_met_labels_20220218/VectorTileServer",
+      } ,
+      buttonLabel: "Basemap Antwerpen (Vector, Custom)"
+    };
+
+    normalTileLayer = {
+      layer: {
+        name: "Luchtfoto_actueel_wgs84",
+        url: "https://geodata.antwerpen.be/arcgissql/rest/services/P_Publiek/Luchtfoto_actueel_wgs84/MapServer/tile/{z}/{y}/{x}",
+      } ,
+      buttonLabel: "Luchtfoto Antwerpen (Tile, Custom)"
     };
 
     operationalLayerOptions: OperationalLayerOptions = {
@@ -74,7 +92,7 @@ export class AppComponent implements OnInit {
         this.result = result;
     }
 
-    changeSettings() {
+    changeOverlaySettings() {
         this.supportingLayerOptions = {
             url: 'https://geodata.antwerpen.be/arcgissql/rest/services/P_ToK/P_Tok_routeweek/Mapserver',
             layerIds: [143, 144, 147],
@@ -85,6 +103,10 @@ export class AppComponent implements OnInit {
             layerId: 2,
             enableClustering: false,
         };
+    }
+
+    changeSettingsToVectorBased() {
+        this.vectorBased = !this.vectorBased
     }
 
     onClickOperationalMarker(event: any): void {

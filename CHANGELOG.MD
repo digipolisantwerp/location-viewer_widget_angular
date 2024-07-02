@@ -10,6 +10,11 @@ All notable changes to this project will be documented in this file.
 "### Fixed" for any bug fixes.
 "### Security" in case of vulnerabilities.
 -->
+## Unreleased
+
+### Added
+
+-   Added support for vector-based layers for basemaps, currently only available for the custom basemap.
 
 ## [3.2.1] - 2024-06-12
 
