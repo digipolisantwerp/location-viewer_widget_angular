@@ -107,6 +107,7 @@ export class AppComponent implements OnInit {
 
     changeSettingsToVectorBased() {
         this.vectorBased = !this.vectorBased
+        this.locationViewer.toggleTileLayer(false)
     }
 
     onClickOperationalMarker(event: any): void {

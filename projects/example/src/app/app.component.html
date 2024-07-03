@@ -11,11 +11,11 @@
             [operationalLayerOptions]="operationalLayerOptions"
             [filterLayers]="filterLayers"
             [currentPosition]="currentPosition"
+            [tileLayerIsVectorBased] = vectorBased
+            [tileLayer]="vectorBased ? vectorTileLayer : normalTileLayer"
             (filteredResult)="updateResult($event)"
             (markerClicked)="onClickOperationalMarker($event)"
             (whatIsHereSelected)="onWhatIsHereSelected($event)"
-            [tileLayerIsVectorBased] = vectorBased
-            [tileLayer]="vectorBased ? vectorTileLayer : normalTileLayer"
         >
             <div controls bottom right>
                 <button
