@@ -21,13 +21,18 @@ export class AppComponent implements OnInit {
     currentPosition: Array<number> = null;
     locating = false;
     result: GeofeatureDetail[];
+    resultVector: GeofeatureDetail[];
     geoApiBaseUrl = 'https://geoapi-app1-o.antwerpen.be/v2/';
     showLayerManagement = true;
-    vectorBased = false
 
     supportingLayerOptions: SupportingLayerOptions = {
         url: 'https://geodata.antwerpen.be/arcgissql/rest/services/P_ToK/P_Tok_routeweek/Mapserver',
         layerIds: [143, 144, 145, 146, 147],
+    };
+
+    supportingLayerOptionsVectorMap: SupportingLayerOptions = {
+      url: 'https://geodata.antwerpen.be/arcgissql/rest/services/P_ToK/P_Tok_routeweek/Mapserver',
+      layerIds: [143, 144, 145, 146, 147],
     };
 
     vectorTileLayer = {
@@ -67,6 +72,27 @@ export class AppComponent implements OnInit {
         enableClustering: true,
     };
 
+      operationalLayerOptionsVectorMap: OperationalLayerOptions = {
+        name: 'taken',
+        isVisible: true,
+        markers: taken._embedded.tasks
+          .filter((x) => x.locationDuringAssignment.xCoordinate !== null && x.locationDuringAssignment.xCoordinate !== '')
+          .map((x) => {
+            const marker: OperationalMarker = {
+              data: x,
+              icon: x.icon,
+              coordinate: {
+                lat: +x.locationDuringAssignment.xCoordinate,
+                lon: +x.locationDuringAssignment.yCoordinate,
+              },
+              color: '#000000',
+              size: '20px',
+            };
+            return marker;
+          }),
+        enableClustering: true,
+      };
+
     filterLayers: FilterLayerOptions[] = [
         {
             url: 'https://geodata.antwerpen.be/arcgissql/rest/services/P_ToK/P_Tok_routeweek/Mapserver',
@@ -92,6 +118,10 @@ export class AppComponent implements OnInit {
         this.result = result;
     }
 
+    updateResultVector(resultVector: GeofeatureDetail[]) {
+        this.resultVector = resultVector;
+    }
+
     changeOverlaySettings() {
         this.supportingLayerOptions = {
             url: 'https://geodata.antwerpen.be/arcgissql/rest/services/P_ToK/P_Tok_routeweek/Mapserver',
@@ -105,9 +135,17 @@ export class AppComponent implements OnInit {
         };
     }
 
-    changeSettingsToVectorBased() {
-        this.vectorBased = !this.vectorBased
-        this.locationViewer.toggleTileLayer(false)
+    changeOverlaySettingsVectorMap() {
+        this.supportingLayerOptionsVectorMap = {
+          url: 'https://geodata.antwerpen.be/arcgissql/rest/services/P_ToK/P_Tok_routeweek/Mapserver',
+          layerIds: [143, 144, 147],
+        };
+
+        this.operationalLayerOptionsVectorMap = {
+          url: 'https://geoint.antwerpen.be/arcgissql/rest/services/P_Stad/Mobiliteit/Mapserver',
+          layerId: 2,
+          enableClustering: false,
+        };
     }
 
     onClickOperationalMarker(event: any): void {
