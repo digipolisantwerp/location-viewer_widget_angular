@@ -1,6 +1,6 @@
-<div class="u-container">
+<div class="u-container u-margin-bottom">
     <div class="u-margin-top u-margin-bottom">
-        <h1 class="h5 u-margin-bottom">Location Viewer Widget</h1>
+        <h1 class="h5 u-margin-bottom">Location Viewer Widget (Basic implementation)</h1>
     </div>
     <div class="u-bg-light u-margin-top u-margin-bottom">
         <aui-location-viewer
@@ -11,6 +11,7 @@
             [operationalLayerOptions]="operationalLayerOptions"
             [filterLayers]="filterLayers"
             [currentPosition]="currentPosition"
+            [tileLayer]="normalTileLayer"
             (filteredResult)="updateResult($event)"
             (markerClicked)="onClickOperationalMarker($event)"
             (whatIsHereSelected)="onWhatIsHereSelected($event)"
@@ -28,9 +29,48 @@
             </div>
         </aui-location-viewer>
     </div>
-    <button class="a-button" aria-label="Change configuration" (click)="changeSettings()">Change configuration</button>
-    <div *ngIf="result">
+    <button class="a-button" aria-label="Change configuration" (click)="changeOverlaySettings()">Change configuration</button>
+    <div *ngIf="result" class="u-margin-bottom u-margin-top">
         <p>Number of results: {{ result.length }}</p>
-        <pre>{{ result.slice(0, 10) | json }}</pre>
+        <pre class="a-pre u-vertical-scroll a-pre-max-height">{{ result.slice(0, 10) | json }}</pre>
     </div>
+      <div class="u-margin-top-xl u-margin-bottom">
+        <h1 class="h5 u-margin-bottom">Location Viewer Widget (Vector implementation with extra options)</h1>
+      </div>
+      <div class="u-bg-light u-margin-top u-margin-bottom">
+        <aui-location-viewer
+          #locationViewer
+          [geoApiBaseUrl]="geoApiBaseUrl"
+          [showLayerManagement]="showLayerManagement"
+          [supportingLayerOptions]="supportingLayerOptionsVectorMap"
+          [operationalLayerOptions]="operationalLayerOptionsVectorMap"
+          [filterLayers]="filterLayers"
+          [currentPosition]="currentPosition"
+          [tileLayerIsVectorBased]="true"
+          [tileLayer]="vectorTileLayer"
+          [mapCenter]="[51.200, 4.410]"
+          [zoomOnMarkerSelect]="18"
+          [defaultZoom]="13"
+          (filteredResult)="updateResultVector($event)"
+          (markerClicked)="onClickOperationalMarker($event)"
+          (whatIsHereSelected)="onWhatIsHereSelected($event)"
+        >
+          <div controls bottom right>
+            <button
+              type="button"
+              class="a-button has-icon"
+              (click)="handler()"
+              aria-label="Go to my location"
+              title="Go to my location"
+            >
+              <aui-icon name="ai-compass-arrow"></aui-icon>
+            </button>
+          </div>
+        </aui-location-viewer>
+      </div>
+      <button class="a-button" aria-label="Change configuration" (click)="changeOverlaySettingsVectorMap()">Change configuration</button>
+      <div *ngIf="resultVector" class="u-margin-bottom u-margin-top">
+        <p>Number of results: {{ resultVector.length }}</p>
+        <pre class="a-pre u-vertical-scroll a-pre-max-height">{{ resultVector.slice(0, 10) | json }}</pre>
+      </div>
 </div>

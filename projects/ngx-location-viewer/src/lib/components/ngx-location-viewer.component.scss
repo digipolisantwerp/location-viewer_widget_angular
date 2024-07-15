@@ -36,6 +36,14 @@
     font-size: 1.6rem;
     color: var(--THEME1-600);
   }
+
+  .o-leaflet__controls {
+    pointer-events: none;
+
+    button {
+      pointer-events: auto;
+    }
+  }
 }
 
 .m-button-group {

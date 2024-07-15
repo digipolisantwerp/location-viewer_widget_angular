@@ -88,6 +88,7 @@ Create a contract with the "GEOAPI" on the api-store
     [leafletMap]="leafletMap"
     [defaultTileLayerLabel]="defaultTileLayerLabel"
     [tileLayer]="tileLayer"
+    [tileLayerIsVectorBased] ="vectorBased"
     [zoomOnMarkerSelect]="zoomOnMarkerSelect"
     (addPolygon)="onAddPolygon($event)"
     (addLine)="onAddLine($event)"
@@ -149,8 +150,15 @@ class ExampleComponent {
     @Input() leafletMap: LocationViewerMap;
     /* Default tile layer button label */
     @Input() defaultTileLayerLabel = 'Kaart';
-    /* Custom leaflet tile layer, if provided, shows actions on the leaflet to toggle between default and custom tile layer. */
+    /* Custom leaflet tile layer, if provided, shows actions on the leaflet to toggle between default and custom tile layer. 
+    * 
+    *  If tileLayerIsVectorBased is true, you don't need to suffix the URL of the VectorTileServer with {z}/{y}/{x}.pbf. The following URL would work: https://tiles.arcgis.com/tiles/1KSVSmnHT2Lw9ea6/arcgis/rest/services/basemap_antwerpen_met_labels_20220218/VectorTileServer (Also the style that is provided under ../../VectorTileServer/resources/styles will be used by default.) 
+    *  See [esri-leaflet-vector](https://github.com/Esri/esri-leaflet-vector) for more information.
+    * */
     @Input() tileLayer: LeafletTileLayerModel;
+    /* Sets the LocationViewer up to accept Vector based layer, instead of Raster based (default Raster based). 
+    * */
+    @Input() tileLayerIsVectorBased: boolean = false;
     /**
      * The zoom level when a marker is selected.
      * If null the zoomlevel won't change after marker selection.

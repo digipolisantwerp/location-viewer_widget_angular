@@ -21,11 +21,34 @@ export class AppComponent implements OnInit {
     currentPosition: Array<number> = null;
     locating = false;
     result: GeofeatureDetail[];
+    resultVector: GeofeatureDetail[];
     geoApiBaseUrl = 'https://geoapi-app1-o.antwerpen.be/v2/';
     showLayerManagement = true;
+
     supportingLayerOptions: SupportingLayerOptions = {
         url: 'https://geodata.antwerpen.be/arcgissql/rest/services/P_ToK/P_Tok_routeweek/Mapserver',
         layerIds: [143, 144, 145, 146, 147],
+    };
+
+    supportingLayerOptionsVectorMap: SupportingLayerOptions = {
+      url: 'https://geodata.antwerpen.be/arcgissql/rest/services/P_ToK/P_Tok_routeweek/Mapserver',
+      layerIds: [143, 144, 145, 146, 147],
+    };
+
+    vectorTileLayer = {
+      layer: {
+        name: "Basemap_antwerpen_met_labels_20220218",
+        url: "https://tiles.arcgis.com/tiles/1KSVSmnHT2Lw9ea6/arcgis/rest/services/basemap_antwerpen_met_labels_20220218/VectorTileServer",
+      } ,
+      buttonLabel: "Basemap Antwerpen (Vector, Custom)"
+    };
+
+    normalTileLayer = {
+      layer: {
+        name: "Luchtfoto_actueel_wgs84",
+        url: "https://geodata.antwerpen.be/arcgissql/rest/services/P_Publiek/Luchtfoto_actueel_wgs84/MapServer/tile/{z}/{y}/{x}",
+      } ,
+      buttonLabel: "Luchtfoto Antwerpen (Tile, Custom)"
     };
 
     operationalLayerOptions: OperationalLayerOptions = {
@@ -48,6 +71,27 @@ export class AppComponent implements OnInit {
             }),
         enableClustering: true,
     };
+
+      operationalLayerOptionsVectorMap: OperationalLayerOptions = {
+        name: 'taken',
+        isVisible: true,
+        markers: taken._embedded.tasks
+          .filter((x) => x.locationDuringAssignment.xCoordinate !== null && x.locationDuringAssignment.xCoordinate !== '')
+          .map((x) => {
+            const marker: OperationalMarker = {
+              data: x,
+              icon: x.icon,
+              coordinate: {
+                lat: +x.locationDuringAssignment.xCoordinate,
+                lon: +x.locationDuringAssignment.yCoordinate,
+              },
+              color: '#000000',
+              size: '20px',
+            };
+            return marker;
+          }),
+        enableClustering: true,
+      };
 
     filterLayers: FilterLayerOptions[] = [
         {
@@ -74,7 +118,11 @@ export class AppComponent implements OnInit {
         this.result = result;
     }
 
-    changeSettings() {
+    updateResultVector(resultVector: GeofeatureDetail[]) {
+        this.resultVector = resultVector;
+    }
+
+    changeOverlaySettings() {
         this.supportingLayerOptions = {
             url: 'https://geodata.antwerpen.be/arcgissql/rest/services/P_ToK/P_Tok_routeweek/Mapserver',
             layerIds: [143, 144, 147],
@@ -84,6 +132,19 @@ export class AppComponent implements OnInit {
             url: 'https://geoint.antwerpen.be/arcgissql/rest/services/P_Stad/Mobiliteit/Mapserver',
             layerId: 2,
             enableClustering: false,
+        };
+    }
+
+    changeOverlaySettingsVectorMap() {
+        this.supportingLayerOptionsVectorMap = {
+          url: 'https://geodata.antwerpen.be/arcgissql/rest/services/P_ToK/P_Tok_routeweek/Mapserver',
+          layerIds: [143, 144, 147],
+        };
+
+        this.operationalLayerOptionsVectorMap = {
+          url: 'https://geoint.antwerpen.be/arcgissql/rest/services/P_Stad/Mobiliteit/Mapserver',
+          layerId: 2,
+          enableClustering: false,
         };
     }
 
