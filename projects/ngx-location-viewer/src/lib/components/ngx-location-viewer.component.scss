@@ -40,7 +40,8 @@
   .o-leaflet__controls {
     pointer-events: none;
 
-    button {
+    button,
+    select {
       pointer-events: auto;
     }
   }
